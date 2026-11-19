@@ -1,0 +1,55 @@
+{
+  "name": "XMaker Simulator Recovery",
+  "source_page": "https://xmaker.ovobot.cc/#editor",
+  "simulator_frame": "https://xmaker.ovobot.cc/static/simulator.html#sim-frame-490204441823014692270.9271978514954502",
+  "screen": {
+    "width": 160,
+    "height": 120
+  },
+  "recovered_files": {
+    "scripts": [
+      {
+        "file": "assets/bluebird.min.js",
+        "source_url": "https://pxt-xtronpro.oss-cn-shanghai.aliyuncs.com/blob/e02a9cddc505e788224c3c57556c11a16be35804/bluebird.min.js",
+        "bytes": 79577,
+        "sha256": "030698989ef937abed0065f38a07b31f6a3b8afd633f25f7d76c545b5176d77a"
+      },
+      {
+        "file": "assets/pxtsim.js",
+        "source_url": "https://pxt-xtronpro.oss-cn-shanghai.aliyuncs.com/blob/0edc639a090fd1d76296128358ab6bd90a4eb81a/pxtsim.js",
+        "bytes": 377407,
+        "sha256": "dd590e0c48070c07763718a109850e59f59afe0bb5bf743d6e484faa3621b22a"
+      },
+      {
+        "file": "assets/sim.js",
+        "source_url": "https://pxt-xtronpro.oss-cn-shanghai.aliyuncs.com/blob/b5af9f8202b74b8ec52a651bdb537f35f00236b1/sim.js",
+        "bytes": 139512,
+        "sha256": "f46378cfd4f3a7d52fbec372b867141f06a47d9042ed9be2542c76f9fac0e095"
+      }
+    ],
+    "styles": [
+      {
+        "file": "assets/sim.css",
+        "source_url": "https://pxt-xtronpro.oss-cn-shanghai.aliyuncs.com/blob/5e38eb1b6e33ea92494e8e9c7eac3e584b89ee0d/sim.css",
+        "bytes": 54688
+      },
+      {
+        "file": "assets/icons.css",
+        "source_url": "https://pxt-xtronpro.oss-cn-shanghai.aliyuncs.com/blob/5177d9b7a46ee8a8ae221320e17ad292f369d917/icons.css",
+        "bytes": 11691
+      }
+    ]
+  },
+  "captured_ui": [
+    "simulator DOM",
+    "joystick SVG",
+    "A/B button SVG",
+    "menu/power/reset SVG",
+    "160x120 canvas"
+  ],
+  "not_captured": [
+    "separate remote font/image assets if any beyond inline SVG/CSS data",
+    "parent MakeCode editor runtime/host implementation"
+  ],
+  "integration_note": "Recovered simulator is a PXT simulator board implementation. It expects a PXT parent host to send simulator messages; this bundle is not a drop-in MakeCode Arcade extension."
+}

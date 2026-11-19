@@ -1,0 +1,166 @@
+<html lang="en" manifest="/---simmanifest" data-framework="typescript"><head>
+    <meta charset="utf-8">
+    <title>sample simulator</title>
+    <link rel="stylesheet" type="text/css" href="assets/sim.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/icons.css">
+    <style>
+        body {
+            background: transparent;
+            overflow: hidden;
+        }
+
+        /* fix for iOS; see https://github.com/PierBover/ios-iframe-fix */
+        #wrap {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+    <script src="assets/bluebird.min.js"></script>
+    <script src="assets/pxtsim.js"></script>
+    <script src="assets/sim.js"></script>
+
+    
+</head> 
+
+<body id="root" class="blur">
+    <div id="wrap">
+        <div id="debug-stats" class="stats no-select"></div>
+        
+        <div class="game-pad">
+            <div class="game-padmain">
+                <div class="mygame-player">
+                    <div class="game-toppad">
+                    <div class="game-logo">
+                        
+                    </div>
+                    <div class="circle-left">
+                    </div>
+                    <div class="circle-right">
+                    </div>
+                    </div>
+                    <div class="screen-boarder">
+                        <div class="screen-display">
+                            <canvas id="game-screen" class="" width="160" height="120"></canvas>
+                        </div>
+                    </div>
+                    <div class="game-bottompad">
+                        <button class="game-leftmenu">
+                            <svg width="28px" height="28px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="menuL" transform="translate(-34.000000, -128.000000)" fill="#FFEC9C">
+                                        <path class="menuiconL" id="path1" d="M35.409,136.40511 C38.6685,138.03561 41.9285,139.66561 45.189,141.29511 C45.9242291,141.66249 46.8180701,141.364289 47.1854499,140.62906 C47.5528297,139.893831 47.254629,138.99999 46.5194,138.63261 C44.1465,137.44611 41.7740333,136.26011 39.402,135.07461 C41.775,133.88811 44.1474667,132.70161 46.5194,131.51511 C46.9958121,131.27808 47.3093194,130.804614 47.3415567,130.273471 C47.373794,129.742328 47.1198502,129.234422 46.6756024,128.941513 C46.2313546,128.648603 45.6644788,128.615313 45.189,128.85421 C41.928,130.48461 38.668,132.114577 35.409,133.74411 C34.9050024,133.996054 34.5866264,134.511148 34.5866264,135.07461 C34.5866264,135.638072 34.9050024,136.153166 35.409,136.40511 Z"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </button>
+                        <button class="game-rightmenu">
+                            <svg width="28px" height="28px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="menuR" transform="translate(-104.000000, -128.000000)" fill="#FFEC9C">
+                                        <path class="menuicon1" id="path1" d="M107.4356,130.18461 C107.4356,129.363225 106.769735,128.69736 105.94835,128.69736 C105.126965,128.69736 104.4611,129.363225 104.4611,130.18461 L104.4611,139.96461 C104.4611,140.785995 105.126965,141.45186 105.94835,141.45186 C106.769735,141.45186 107.4356,140.785995 107.4356,139.96461 L107.4356,130.18461 Z" fill="#FFEC9C"></path>
+                                        <path class="menuicon2" id="path2" d="M112.3268,130.18461 C112.3268,129.36281 111.6606,128.69661 110.8388,128.69661 C110.017,128.69661 109.3508,129.36281 109.3508,130.18461 L109.3508,139.96461 C109.3508,140.78641 110.017,141.45261 110.8388,141.45261 C111.6606,141.45261 112.3268,140.78641 112.3268,139.96461 L112.3268,130.18461 Z" fill="#FFEC9C"></path>
+                                        <path class="menuicon3" id="path3" d="M117.2163,130.18461 C117.2163,129.36281 116.5501,128.69661 115.7283,128.69661 C114.9065,128.69661 114.2403,129.36281 114.2403,130.18461 L114.2403,139.96461 C114.2403,140.78641 114.9065,141.45261 115.7283,141.45261 C116.5501,141.45261 117.2163,140.78641 117.2163,139.96461 L117.2163,130.18461 Z" fill="#FFEC9C"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </button>
+    
+                    </div>    
+                </div>
+                <div class="game-ctllayer">
+                </div>
+                <div id="game-joystick-container" class="game-joysticklayer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67">
+                        <defs>
+                            <style>.cls-1{fill:#ffe45f;}.cls-2{fill:#eabf0c;}</style>
+                        </defs>
+                        <g id="图层_2" data-name="图层 2">
+                            <g id="图层_1-2" data-name="图层 1">
+                                <path class="cls-1" d="M28.33,66a4.86,4.86,0,0,1-.78-.06,5,5,0,0,1-.8-.2,4.93,4.93,0,0,1-.79-.35,4.8,4.8,0,0,1-.73-.5,4.85,4.85,0,0,1-.63-.63,4.92,4.92,0,0,1-.5-.73,4.85,4.85,0,0,1-.62-2.37V46.38a3,3,0,0,0,0-.46,2.85,2.85,0,0,0-1.42-2,3,3,0,0,0-.46-.21,2.9,2.9,0,0,0-.91-.16H5.85a4.86,4.86,0,0,1-.78-.06,5,5,0,0,1-.8-.2A4.85,4.85,0,0,1,1,38.68V28.33a4.85,4.85,0,0,1,4.85-4.85H20.62a2.82,2.82,0,0,0,.46,0,2.85,2.85,0,0,0,2.4-2.79V5.85a4.84,4.84,0,0,1,.27-1.59,4.92,4.92,0,0,1,.35-.79,5,5,0,0,1,.5-.73,4.91,4.91,0,0,1,.63-.63A4.86,4.86,0,0,1,28.33,1H38.68a4.82,4.82,0,0,1,.79.06,4.77,4.77,0,0,1,.8.2,4.72,4.72,0,0,1,.79.35,4.85,4.85,0,0,1,2.48,4.23V20.62a2.91,2.91,0,0,0,0,.46,2.85,2.85,0,0,0,1.42,2,2.79,2.79,0,0,0,.46.21,2.82,2.82,0,0,0,.47.12,2.73,2.73,0,0,0,.43,0h14.8A4.85,4.85,0,0,1,66,28.33V38.68a4.85,4.85,0,0,1-2.48,4.23,4.92,4.92,0,0,1-.78.35,5.05,5.05,0,0,1-.8.2,4.87,4.87,0,0,1-.79.06H46.38a2.88,2.88,0,0,0-.46,0,2.79,2.79,0,0,0-.47.12,2.92,2.92,0,0,0-.47.21,2.89,2.89,0,0,0-.43.29,2.82,2.82,0,0,0-.66.8,2.86,2.86,0,0,0-.36,1.37v14.8a4.85,4.85,0,0,1-2.48,4.23,4.92,4.92,0,0,1-.78.35,5,5,0,0,1-.8.2,4.87,4.87,0,0,1-.79.06Z"></path>
+                                <path class="cls-2" d="M38.68,2a3.85,3.85,0,0,1,3.85,3.85V20.66a3.85,3.85,0,0,0,3.81,3.81H61.15A3.85,3.85,0,0,1,65,28.32h0V38.68a3.85,3.85,0,0,1-3.85,3.85H46.34a3.85,3.85,0,0,0-3.81,3.81V61.15A3.85,3.85,0,0,1,38.68,65H28.33a3.85,3.85,0,0,1-3.85-3.85h0V46.34a3.85,3.85,0,0,0-3.81-3.81H5.85A3.85,3.85,0,0,1,2,38.68V28.33a3.85,3.85,0,0,1,3.85-3.85H20.66a3.85,3.85,0,0,0,3.81-3.81V5.85A3.85,3.85,0,0,1,28.33,2H38.68m0-2H28.33a5.85,5.85,0,0,0-5.85,5.85h0V20.62a1.89,1.89,0,0,1,0,.3,1.85,1.85,0,0,1-1.81,1.55H5.85A5.85,5.85,0,0,0,0,28.33V38.68a5.85,5.85,0,0,0,5.85,5.85H20.62l.3,0a1.85,1.85,0,0,1,1.55,1.81V61.15A5.85,5.85,0,0,0,28.33,67H38.68a5.85,5.85,0,0,0,5.85-5.85h0V46.38a1.85,1.85,0,0,1,1.83-1.85H61.15A5.85,5.85,0,0,0,67,38.68h0V28.33a5.85,5.85,0,0,0-5.85-5.85H46.38l-.3,0a1.85,1.85,0,0,1-1.55-1.81V5.85A5.85,5.85,0,0,0,38.68,0Z"></path>
+                                <path id="left_bg" data-name="left bg" fill="#ffe45f" class="dpad-left" d="M20.62,42.53a9,9,0,1,0,0-18.06H5.85A3.85,3.85,0,0,0,2,28.33V38.68a3.85,3.85,0,0,0,3.85,3.85Z"></path>
+                                <path id="up_bg" data-name="up bg" fill="#ffe45f" class="dpad-up" d="M24.47,20.62a9,9,0,1,0,18.06,0s0,0,0,0V5.85A3.85,3.85,0,0,0,38.68,2H28.33a3.85,3.85,0,0,0-3.85,3.85Z"></path>
+                                <path id="right_bg" data-name="right bg" fill="#ffe45f" class="dpad-right" d="M46.38,24.47a9,9,0,0,0,0,18.06H61.15A3.85,3.85,0,0,0,65,38.68h0V28.33a3.85,3.85,0,0,0-3.85-3.85Z"></path>
+                                <path id="down_bg" data-name="down bg" fill="#ffe45f" class="dpad-down" d="M42.53,46.38a9,9,0,0,0-18.06,0s0,0,0,0V61.15A3.85,3.85,0,0,0,28.33,65H38.68a3.85,3.85,0,0,0,3.85-3.85Z"></path>
+                                <path pointer-events="none" id="left" class="cls-2" d="M13.92,30.72a.32.32,0,0,0-.48-.28L8.62,33.22a.32.32,0,0,0,0,.56l4.82,2.78a.32.32,0,0,0,.48-.28Z"></path>
+                                <path pointer-events="none" id="up" class="cls-2" d="M36.28,13.92a.32.32,0,0,0,.28-.48L33.78,8.62a.32.32,0,0,0-.56,0l-2.78,4.82a.32.32,0,0,0,.28.48Z"></path>
+                                <path pointer-events="none" id="right" class="cls-2" d="M53.09,36.28a.32.32,0,0,0,.48.28l4.82-2.78a.32.32,0,0,0,0-.56l-4.82-2.78a.32.32,0,0,0-.48.28Z"></path>
+                                <path pointer-events="none" id="down" class="cls-2" d="M30.72,53.09a.32.32,0,0,0-.28.48l2.78,4.82a.32.32,0,0,0,.56,0l2.78-4.82a.32.32,0,0,0-.28-.48Z"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </div> 
+                <div id="game-buttons-container" class="game-buttonlayer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.26 59.19">
+                        <defs>
+                            <style>.cls-1{fill:#ffe45f;}.cls-2{fill:#eabf0c;}</style>
+                        </defs>
+                        <g id="图层_2" data-name="图层 2">
+                            <g id="图层_1-2" data-name="图层 1">
+                                <g id="图层_2-2" data-name="图层 2">
+                                    <g id="图层_1-2-2" data-name="图层 1-2">
+                                        <g id="a_bg" data-name="a bg">
+                                            <path fill="#ffe45f" class="button-a" d="M42.17,29.18a14.09,14.09,0,1,1,10-4.13A14.09,14.09,0,0,1,42.17,29.18Z"></path>
+                                            <path class="cls-2" d="M42.17,2a13.09,13.09,0,1,1-9.25,3.83A13.09,13.09,0,0,1,42.17,2m0-2A15.09,15.09,0,1,0,52.84,4.42,15.09,15.09,0,0,0,42.17,0Z"></path>
+                                        </g>
+                                        <g id="b_bg" data-name="b bg">
+                                            <path fill="#ffe45f" class="button-b" d="M15.09,58.19a14.09,14.09,0,1,1,10-4.13A14.09,14.09,0,0,1,15.09,58.19Z"></path>
+                                            <path class="cls-2" d="M15.09,31a13.09,13.09,0,1,1-9.25,3.83A13.09,13.09,0,0,1,15.09,31m0-2a15.09,15.09,0,1,0,10.67,4.42A15.09,15.09,0,0,0,15.09,29Z"></path>
+                                        </g>
+                                        <path id="a_1" data-name="a 1" fill="#eabf0c" pointer-events="none" class="label-a" d="M49.51,19.93,43.34,7.59a1.31,1.31,0,0,0-2.34,0L34.83,19.93a1.31,1.31,0,1,0,2.34,1.17h0L38,19.41a.37.37,0,0,1,.33-.21H46a.37.37,0,0,1,.33.21l.84,1.69a1.31,1.31,0,0,0,2.34-1.16Z"></path>
+                                        <g id="a2">
+                                            <path pointer-events="none" fill="#ffe45f" class="label-a0" d="M44.31,16.58H40A.37.37,0,0,1,39.7,16l2.14-4.28a.37.37,0,0,1,.67,0L44.64,16a.37.37,0,0,1-.33.54Z"></path>
+                                        </g>
+                                        <path id="b_1" data-name="b 1" fill="#eabf0c" pointer-events="none" class="label-b" d="M22.08,43.86a4.39,4.39,0,0,0-3.35-7.24H9.48a1.31,1.31,0,0,0-1.31,1.31V50.27a1.31,1.31,0,0,0,1.31,1.31h9.26a4.39,4.39,0,0,0,3.35-7.24A.37.37,0,0,1,22.08,43.86Z"></path>
+                                        <g id="b3">
+                                            <path pointer-events="none" fill="#ffe45f" class="label-b1" d="M18.73,49H11.16a.37.37,0,0,1-.37-.37v-2.8a.37.37,0,0,1,.37-.37h7.57a1.78,1.78,0,1,1,0,3.55Z"></path>
+                                        </g>
+                                        <g id="b2">
+                                            <path pointer-events="none" fill="#ffe45f" class="label-b0" d="M18.73,42.79H11.16a.37.37,0,0,1-.37-.37v-2.8a.37.37,0,0,1,.37-.37h7.57a1.78,1.78,0,0,1,0,3.55Z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>  
+            </div>    
+
+            <div class="power-reset-part">
+
+                <button class="game-power">
+                    <svg width="5px" height="21px" viewBox="0 0 5 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="资源-2" transform="translate(-151.000000, -85.000000)" fill="#EABF0C" fill-rule="nonzero">
+                                <g id="reset" transform="translate(151.000000, 85.000000)">
+                                    <path class="dpad-power" d="M2.14569,0.82282 L0.01969,0.82282 L0.01969,20.66532 L2.14569,20.66532 C3.71119178,20.665309 4.98027895,19.3962218 4.98029,17.83072 L4.98029,3.65751 C4.98030591,2.90571418 4.6816694,2.18470408 4.15007792,1.65309572 C3.61848643,1.12148737 2.89748582,0.822827956 2.14569,0.82282 Z" id="Shape"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+                <button class="game-reset">
+                    <svg width="5px" height="21px" viewBox="0 0 5 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="资源-2" transform="translate(-151.000000, -85.000000)" fill="#EABF0C" fill-rule="nonzero">
+                                <g id="reset" transform="translate(151.000000, 85.000000)">
+                                    <path class="dpad-reset" d="M2.14569,0.82282 L0.01969,0.82282 L0.01969,20.66532 L2.14569,20.66532 C3.71119178,20.665309 4.98027895,19.3962218 4.98029,17.83072 L4.98029,3.65751 C4.98030591,2.90571418 4.6816694,2.18470408 4.15007792,1.65309572 C3.61848643,1.12148737 2.89748582,0.822827956 2.14569,0.82282 Z" id="Shape"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+            </div>    
+
+        </div>
+
+    </div>
+
+
+</body></html>
