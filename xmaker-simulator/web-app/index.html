@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#242424">
+  <title>XMaker Simulator – Web App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">AXEL-007 · PXT-XTRON-ARCADE</div>
+      <h1>XMaker Simulator</h1>
+      <p>Contenitore web per i sorgenti originali recuperati</p>
+    </div>
+    <div class="status" id="load-status" role="status" aria-live="polite">
+      <span class="dot"></span> Avvio pagina simulatore…
+    </div>
+  </header>
+
+  <main>
+    <section class="sim-frame-wrap" aria-label="Simulatore XMaker originale">
+      <iframe
+        id="xmaker-frame"
+        title="Simulatore XMaker originale"
+        src="../simulator.html"
+        allow="autoplay; fullscreen"
+        loading="eager">
+      </iframe>
+    </section>
+
+    <section class="toolbar" aria-label="Controlli pagina">
+      <button id="reload" type="button">Ricarica simulatore</button>
+      <a href="../simulator.html" target="_blank" rel="noopener">Apri simulatore da solo</a>
+      <a href="https://github.com/Axel-007/pxt-xtron-arcade/tree/main/xmaker-simulator" target="_blank" rel="noopener">Sorgenti su GitHub</a>
+    </section>
+
+    <section class="notice" aria-labelledby="notice-title">
+      <h2 id="notice-title">Stato dell’integrazione</h2>
+      <p><strong>Questa è la prima web app contenitore.</strong> Carica la pagina originale <code>simulator.html</code> e i suoi file in <code>assets/</code>, senza copiarli, riscriverli o alterare le estensioni Xtron.</p>
+      <p>La presenza della scocca e dei controlli non significa ancora che un gioco MakeCode Arcade possa essere eseguito. Il simulatore originale definisce un proprio <code>pxsim.Board</code> basato su <code>pxsim.BaseBoard</code> e usa <code>ScreenState</code>/<code>GamePlayer</code>; serve ancora un host PXT compatibile e un adattatore per il runtime Arcade.</p>
+      <p class="warning">Non incollare qui il JavaScript compilato di Arcade: senza il runtime, il protocollo di avvio e il Board Arcade compatibile non può essere eseguito correttamente.</p>
+    </section>
+  </main>
+
+  <footer>
+    Prototipo di integrazione · Non modifica <code>pxt.json</code> né i file <code>xtron-*.ts</code>.
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
