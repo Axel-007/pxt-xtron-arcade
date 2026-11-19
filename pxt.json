@@ -1,0 +1,18 @@
+{
+  "name": "xtron-arcade-compat",
+  "version": "1.0.0",
+  "description": "Portable Xtron/XMaker compatibility helpers for classic MakeCode Arcade. Hardware-only features are explicitly reported as unavailable.",
+  "dependencies": {
+    "device": "*"
+  },
+  "files": [
+    "xtron-core.ts",
+    "xtron-sensors.ts",
+    "xtron-controls.ts",
+    "xtron-clock.ts",
+    "xtron-audio.ts",
+    "xtron-graphics.ts",
+    "xtron-diagnostics.ts"
+  ],
+  "public": true
+}
